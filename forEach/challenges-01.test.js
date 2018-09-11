@@ -215,14 +215,15 @@ const createList = (availableItems) => {
 
 const fizzbuzz = (arr) => {
   // Solution code here...
-  const modArray =
-  arr.forEach( (num) => {
-    if (num % 3 && 5 === 0)
-    arr.push('Fizz Buzz');
-    if (num % 3 === 0)
-    arr.push('Fizz');
-    if (num % 5 === 0)
-    arr.push('Buzz');
+  arr.forEach( (num, index) => {
+    console.log(index);
+    if (num % 3 === 0 && num % 5 === 0) {
+    arr[index] = ('Fizz Buzz');
+  } else if (num % 3 === 0){
+    arr[index] = ('Fizz');
+    } else if (num % 5 === 0) {
+    arr[index] = ('Buzz');
+    }
   })
   return arr;
 }
@@ -303,11 +304,11 @@ describe('Testing challenge 9', () => {
   });
 });
 
-// describe('Testing challenge 10', () => {
-//   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+describe('Testing challenge 10', () => {
+  const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
-//   test('It should print out messages or numbers', () => {
-//     expect(fizzbuzz(inputs)).toStrictEqual([ 1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'Fizz Buzz', 16 ]);
-//     expect(fizzbuzz(inputs).length).toStrictEqual(16);
-//   });
-// });
+  test('It should print out messages or numbers', () => {
+    expect(fizzbuzz(inputs)).toStrictEqual([ 1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'Fizz Buzz', 16 ]);
+    expect(fizzbuzz(inputs).length).toStrictEqual(16);
+  });
+});
