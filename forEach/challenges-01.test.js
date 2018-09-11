@@ -124,10 +124,16 @@ const addNumbers = (num, arr, times, callback) => {
 
 const removeOne = (num, input) => {
   // Solution code here...
+  if (num % 3 === 2)
+  input.pop();
 }
 
 const removeElements = (input, callback) => {
   // Solution code here...
+for (let num of input) {
+  callback(num, input);
+}
+return input;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -138,6 +144,10 @@ const removeElements = (input, callback) => {
 
 const removeWithForEach = (input, callback) => {
   // Solution code here...
+  input.forEach((i) => {
+    callback(i, input);
+  });
+  return input;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -153,6 +163,12 @@ const removeWithForEach = (input, callback) => {
 
 const removeWithAnon = (input) => {
   // Solution code here...
+  input.forEach( (element, index, array) => {
+console.log(element, index, array)
+ if (element % 3 === 2)
+  input.pop();
+  });
+  return input;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -175,6 +191,12 @@ const removeWithAnon = (input) => {
 
 const createList = (availableItems) => {
   // Solution code here...
+  const shoppingList = [];
+  availableItems.forEach( (inventory) => {
+    if (inventory.available === true)
+    shoppingList.push(inventory.name);
+  })
+  return shoppingList;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -193,6 +215,16 @@ const createList = (availableItems) => {
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+  const modArray =
+  arr.forEach( (num) => {
+    if (num % 3 && 5 === 0)
+    arr.push('Fizz Buzz');
+    if (num % 3 === 0)
+    arr.push('Fizz');
+    if (num % 5 === 0)
+    arr.push('Buzz');
+  })
+  return arr;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -241,35 +273,35 @@ describe('Testing challenge 5', () => {
   });
 });
 
-// describe('Testing challenge 6', () => {
-//   test('It should remove three elements from the array', () => {
-//     expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([ 1, 2, 3, 4, 5, 6, 7 ]);
-//     expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should remove three elements from the array', () => {
+    expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([ 1, 2, 3, 4, 5, 6, 7 ]);
+    expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
+  });
+});
 
-// describe('Testing challenge 7', () => {
-//   test('It should remove three elements from the array', () => {
-//     expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([ 1, 2, 3, 4, 5, 6, 7 ]);
-//     expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should remove three elements from the array', () => {
+    expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([ 1, 2, 3, 4, 5, 6, 7 ]);
+    expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
+  });
+});
 
-// describe('Testing challenge 8', () => {
-//   test('It should remove three elements from the array', () => {
-//     expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual([ 1, 2, 3, 4, 5, 6, 7 ]);
-//     expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).length).toStrictEqual(7);
-//   });
-// });
+describe('Testing challenge 8', () => {
+  test('It should remove three elements from the array', () => {
+    expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual([ 1, 2, 3, 4, 5, 6, 7 ]);
+    expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).length).toStrictEqual(7);
+  });
+});
 
-// describe('Testing challenge 9', () => {
-//   const inventory = [ { name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false } ];
+describe('Testing challenge 9', () => {
+  const inventory = [ { name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false } ];
 
-//   test('It should only add the available items to the list', () => {
-//     expect(createList(inventory)).toStrictEqual([ 'apples', 'pears', 'bananas' ]);
-//     expect(createList(inventory).length).toStrictEqual(3);
-//   });
-// });
+  test('It should only add the available items to the list', () => {
+    expect(createList(inventory)).toStrictEqual([ 'apples', 'pears', 'bananas' ]);
+    expect(createList(inventory).length).toStrictEqual(3);
+  });
+});
 
 // describe('Testing challenge 10', () => {
 //   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
