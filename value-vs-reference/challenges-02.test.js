@@ -11,6 +11,7 @@
 
 const appendTheEnd = (str) => {
   // Solution code here...
+ str = `${str} The end.`;
   return str;
 }
 
@@ -31,6 +32,7 @@ const appendTheEnd = (str) => {
 
 const appendFirstToLast = (list) => {
   // Solution code here...
+  list.push(list[0]);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -50,6 +52,7 @@ const appendFirstToLast = (list) => {
 
 const addBirthYearProperty = (obj, year) => {
   // Solution code here...
+  obj.yearBorn = year;
 }
 
 
@@ -72,6 +75,9 @@ const addBirthYearProperty = (obj, year) => {
 
 const setStatusAsAuthor = (people) => {
   // Solution code here...
+    people.forEach ( (author) => {
+    author.isAuthor = true;
+    })
 }
 
 
@@ -94,7 +100,9 @@ const setStatusAsAuthor = (people) => {
 
 const append = (list1, list2) => {
   // Solution code here...
-
+    list2.forEach((element) => {
+        list1.push(element)
+    })
 }
 
 // ------------------------------------------------------------------------------------------------
